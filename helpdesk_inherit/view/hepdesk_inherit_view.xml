@@ -8,10 +8,7 @@
                 <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='partner_id']" position="after" >
-			     <field name="product_serie_id"/>			    
-                             <field name="products_id"/>
-			     <field name="tracking" invisible="1"/>
-                             <field name="lots_id"  attrs="{'invisible': [('tracking', 'in', ['none', False])]}" />
+			     <field name="product_serie_id"/>
 
                     </xpath>
 
@@ -25,7 +22,7 @@
             <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_kanban"/>
 			<field name="arch" type="xml">
                    <xpath expr="//field[@name='commercial_partner_id']" position="after" >
-                           <br/> <field name="products_id"/>
+                           <br/> <field name="product_serie_id"/>
                     </xpath>
 
 			</field>
