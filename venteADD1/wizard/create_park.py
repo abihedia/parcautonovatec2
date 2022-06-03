@@ -82,7 +82,14 @@ class CreatParkWizard(models.Model):
                                     'fleet_dossier_devis': self.devis_dossier.sale_dossier,
                                     'fleet_devis_id':self.devis_dossier.id,
                                      }
-                            self.env['fleet.vehicle'].create(vals)
+                            parc_id1 =self.env['fleet.vehicle'].create(vals)
+                            vals = {
+                                'num_serie': list_numer_serie[number],
+                                'client_id': self.devis_dossier.partner_id.id,
+                                'fleet_id': parc_id1.id,
+                                'article_id': rec.product_id.id,
+                            }
+                            self.env['fleetserielarticle'].create(vals)
                          except:
                              vals = {
                                  'fleet_serie': "False",
@@ -114,7 +121,13 @@ class CreatParkWizard(models.Model):
                                  'fleet_dossier_devis': self.devis_dossier.sale_dossier,
                                  'fleet_devis_id': self.devis_dossier.id,
                              }
-                             self.env['fleet.vehicle'].create(vals)
+                             parc_id2 = self.env['fleet.vehicle'].create(vals)
+                             vals = {
+                                 'num_serie': "False",
+                                 'client_id': self.devis_dossier.partner_id.id,
+                                 'fleet_id': parc_id2.id,
+                                 'article_id': rec.product_id.id,
+                             }
 
 
 
