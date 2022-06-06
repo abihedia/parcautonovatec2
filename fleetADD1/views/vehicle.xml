@@ -26,7 +26,7 @@
 
                         <label for="fleet_dossier_devis"/>
                         <h1>
-                            <field name="fleet_dossier_devis" placeholder="S256" attrs="{'readonly':[('fleet_artic_id','=',True)]}"/>
+                            <field name="fleet_dossier_devis" placeholder="S256" attrs="{'readonly':[('fleet_artic_id','!=',False)]}"/>
                             <field name="fleet_artic_id" , invisible="1/>
                         </h1>
                         <label for="tag_ids"/>
