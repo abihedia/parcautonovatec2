@@ -64,7 +64,7 @@
                             <field name="partenariat_ids" class="test">
                                     <tree string="suivie partenariat"  editable="bottom">
                                         <field name="annee"  options="{'format': 'YYYY'}"/>
-                                            <field name="currency_id" string="Payment Currency" groups="base.group_multi_currency" optional="hide"/>
+                                            <field name="currency_id" string="Payment Currency" optional="hide"/>
                                         <field name="montant_a_regler" widget="monetary" options="{'currency_field': 'currency_id'}" style="justify-content: center; display :flex ;"> €</field>
                                         <field name="statut"></field>
                                         <field name="date_reglement"></field>
