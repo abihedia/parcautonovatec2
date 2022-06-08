@@ -47,15 +47,11 @@ class clientfleetserielarticle(models.Model):
     def name_get(self):
         result = []
         for model in self:
-            if model.article_id:
-                if model.num_serie:
+            if model.fleet_id:
+                name = model.fleet_id.name_get()[0][1]
 
-                    name =str(model.article_id.name) +' '+ '(' + str(model.num_serie) + ')'
-
-                else:
-                    name = str(model.article_id.name) + ' '+ '(' + "Pas de N° serie" + ')'
             else:
-                name = "Pas d'article"
+                name = "Pas de Parc"
             result.append((model.id, name))
         return result
 
