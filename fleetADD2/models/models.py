@@ -31,7 +31,7 @@ class FleetSErieInherit(models.Model):
 class clientfleetserielarticle(models.Model):
     _name = 'fleetserielarticle'
     _description = ' client fleet seriel article'
-    num_serie = fields.Char(string='Numéros de série')
+    num_serie = fields.Char(string='Numéros de série',related='fleet_id.fleet_serie')
     client_id = fields.Many2one('res.partner', ondelete='Set null', string='Client', index=True)
     fleet_id = fields.Many2one('fleet.vehicle', string='Par Matériel')
     article_id = fields.Many2one('product.product', string='Matériel')
