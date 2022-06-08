@@ -37,7 +37,7 @@ class FleetContINHERIT(models.Model):
     # rendre the default = actif
     state_id = fields.Many2one(default=lambda self: self.env['fleet.vehicle.state'].search([('name', '=', "Actif")])[0].id)
 
-    ##############
+    ###############
     #   Contrat  #
     #############
     fleet_periodicite = fields.Selection([('mens', 'Mensuelle'), ('trim', 'Trimestrielle')],string='Periodicité')
