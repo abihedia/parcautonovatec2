@@ -213,16 +213,16 @@ class FleetContINHERIT(models.Model):
     def name_get(self):
         result = []
         for model in self:
-            if model.fleet_serie:
-                if model.fleet_marque:
-                    if model.fleet_Modele:
-                        name = model.fleet_serie + ':' + model.fleet_marque.name +'/'+ model.fleet_Modele.name
+            if model.fleet_marque:
+                if model.fleet_Modele:
+                    if model.fleet_serie:
+                        name = model.fleet_marque.name +'/'+ model.fleet_Modele.name+'(' + model.fleet_serie + ')'
                     else:
-                        name = model.fleet_serie + ':' + model.fleet_marque.name
+                        name = model.fleet_marque.name +'/'+ model.fleet_Modele.name+'(' + "Pas de N° serie" + ')'
                 else:
-                    name = model.fleet_serie
+                    name = model.fleet_marque.name
             else:
-                name = "Pas de N° serie"
+                name = "Pas de matériel"
 
             result.append((model.id, name))
         return result
