@@ -229,9 +229,24 @@ class FleetContINHERIT(models.Model):
     ## infos pour le calcul automatique
     fleet_artic_id = fields.Many2one('product.product', string='Matériel')
     fleet_devis_id = fields.Many2one('sale.order', string='Devis')
+    
+    @api.onchange('fleet_Modele', 'fleet_marque')
+    def ajouter_article(self):
+        if self.fleet_marque.id:
+            result = self.env['product.product'].search(
+                [('product_marque', '=', self.fleet_marque.id), ('product_Modele', '=', self.fleet_Modele.id)])
+            for record in self:
+                record.fleet_artic_id = result[0]
 
 
     def preview_art(self):
+         if self.fleet_marque.id:
+            ######### add odoo.sh
+            result = self.env['product.product'].search(
+                [('product_marque', '=', self.fleet_marque.id), ('product_Modele', '=', self.fleet_Modele.id)])
+            self.fleet_artic_id = result[0]
+            #########
+        
         return {
             'view_type': 'form',
             'view_mode': 'form',
