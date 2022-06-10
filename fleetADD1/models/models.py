@@ -236,7 +236,8 @@ class FleetContINHERIT(models.Model):
             result = self.env['product.product'].search(
                 [('product_marque', '=', self.fleet_marque.id), ('product_Modele', '=', self.fleet_Modele.id)])
             for record in self:
-                record.fleet_artic_id = result[0]
+                if result:
+                    record.fleet_artic_id = result[0]
 
 
     def preview_art(self):
@@ -244,7 +245,8 @@ class FleetContINHERIT(models.Model):
             
             result = self.env['product.product'].search(
                 [('product_marque', '=', self.fleet_marque.id), ('product_Modele', '=', self.fleet_Modele.id)])
-            self.fleet_artic_id = result[0]
+            if result:
+                self.fleet_artic_id = result[0]
             
         
         return {
