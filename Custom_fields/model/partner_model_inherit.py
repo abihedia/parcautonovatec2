@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError,Warning
+from odoo.exceptions import ValidationError
 
 from datetime import datetime
 
@@ -16,6 +16,18 @@ class PartnerModelHerit(models.Model):
     montant_rest_regl = fields.Monetary('Montant restant à régler', compute='_compute_amount_partner')
     code_client = fields.Char('Numéro client', readonly=True)
     partenariat_ids = fields.One2many('budget.partenariat','partner_id')
+    
+
+    @api.constrains('num_siren')
+    def _check_siret_number(self):
+
+        for rec in self:
+            if rec.num_siren and len(str(rec.num_siren)) != 14 :
+                raise ValidationError(_("Wrong value enter"))
+            else:
+                return False
+        return {}
+
 
     @api.onchange('partenariat_ids')
     def addline(self):
