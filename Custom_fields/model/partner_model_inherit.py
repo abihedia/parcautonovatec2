@@ -9,7 +9,7 @@ class PartnerModelHerit(models.Model):
 
     type_contact = fields.Selection([('Prospect', 'Prospect'), ('Client', 'Client')])
     parc_machine = fields.One2many('fleet.vehicle', 'partner_id')
-    num_siren = fields.Char('N° SIREN')
+    num_siren = fields.Char('N° SIRET')
     activity = fields.Many2one('partner.activity', string='Activité')
     origine = fields.Many2one('partner.origin', string='Origine')
     montant_tot_partenariat = fields.Monetary('Montant total du partenariat', compute='compute_montant_partenariat')
@@ -21,6 +21,17 @@ class PartnerModelHerit(models.Model):
     def addline(self):
         if len(self.partenariat_ids) > 5:
             raise  ValidationError('Vous avez dépassé la limite de 5 lignes')
+            
+    
+    @api.constrains('num_siren')
+    def _check_siret_number(self):
+        for rec in self:
+            if rec.num_siren and len(str(rec.num_siren)) != 14 :
+                raise ValidationError(_("Wrong value enter"))
+            else:
+                return False
+        return {}
+
 
 
     @api.model
