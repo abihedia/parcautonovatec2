@@ -17,11 +17,11 @@ class PartnerModelHerit(models.Model):
     code_client = fields.Char('Numéro client', readonly=True)
     partenariat_ids = fields.One2many('budget.partenariat','partner_id')
     
-    @api.constrains('num_siren')
+    @api.constrains('siret')
     def _check_siret_number(self):
 
         for rec in self:
-            if rec.num_siren and len(str(rec.num_siren)) != 14 :
+            if rec.siret and len(str(rec.siret)) != 14 :
                 raise ValidationError(_("Wrong value enter"))
             else:
                 return False
