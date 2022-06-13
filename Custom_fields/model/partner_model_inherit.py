@@ -22,17 +22,6 @@ class PartnerModelHerit(models.Model):
         if len(self.partenariat_ids) > 5:
             raise  ValidationError('Vous avez dépassé la limite de 5 lignes')
             
-    
-    @api.constrains('num_siren')
-    def _check_siret_number(self):
-        for rec in self:
-            if rec.num_siren and len(str(rec.num_siren)) != 14 :
-                raise ValidationError(_("Wrong value enter"))
-            else:
-                return False
-        return {}
-
-
 
     @api.model
     def create(self, vals):
