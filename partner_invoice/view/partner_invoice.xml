@@ -16,7 +16,6 @@
                                     <field name="code_service"></field>
                                      <field name="augmentation_sav_bool"></field>
                                     <field name="augmentation_sav"></field>
-                                    <field name="siret_customer"></field>
                                 </group>
                                 <group>
 
