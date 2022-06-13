@@ -1,0 +1,33 @@
+<odoo>
+<data>
+
+        <record id="partner_form_invoice" model="ir.ui.view">
+                <field name="name">partner.form.invoice</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="arch" type="xml">
+
+
+                    <xpath expr="//page[@name='contact_addresses']" position="after" >
+                        <page string="Facturation" name="facturation">
+                            <group>
+                                <group>
+                                    <field name="pfr"></field>
+                                    <field name="code_service"></field>
+                                     <field name="augmentation_sav_bool"></field>
+                                    <field name="augmentation_sav"></field>
+                                    <field name="siret_customer"></field>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
+
+                        </page>
+
+                    </xpath>
+                </field>
+        </record>
+
+</data>
+</odoo>
