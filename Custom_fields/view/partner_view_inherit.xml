@@ -36,7 +36,6 @@
 
                     </xpath>
                     <xpath expr="//field[@name='vat']" position="after" >
-                             <field name="num_siren"/>
                              <field name="activity"/>
                              <field name="origine"/>
 
