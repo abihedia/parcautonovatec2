@@ -15,7 +15,7 @@
                                     <field name="pfr"></field>
                                     <field name="code_service"></field>
                                      <field name="augmentation_sav_bool"></field>
-                                    <field name="augmentation_sav"></field>
+                                    <field name="augmentation_sav" attrs="{'invisible': [('augmentation_sav_bool','!=',True)]}"></field>
                                 </group>
                                 <group>
 
