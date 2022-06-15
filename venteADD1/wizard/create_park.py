@@ -47,11 +47,12 @@ class CreatParkWizard(models.Model):
                          sale_leaser = self.devis_dossier.sale_leaser.id
                      else:
                          sale_leaser = False
-
-
-                     for number in range(0, int(rec.product_uom_qty)):
-
-                         try:
+                    num = int(rec.product_uom_qty)
+                    if len(list_numer_serie)< num:    
+                        for i in range(num-len(list_numer_serie)):
+                            list_numer_serie.append('False')
+                     
+                    for number in range(0, int(rec.product_uom_qty)):
                             vals = {
                                     'fleet_serie':list_numer_serie[number],
                                     'fleet_fournisseur': 7,
@@ -90,44 +91,7 @@ class CreatParkWizard(models.Model):
                                 'article_id': rec.product_id.id,
                             }
                             self.env['fleetserielarticle'].create(vals)
-                         except:
-                             vals = {
-                                 'fleet_serie': "False",
-                                 'fleet_fournisseur': 7,
-                                 'fleet_marque': rec.product_id.product_marque.id,
-                                 'fleet_Modele': rec.product_id.product_Modele.id,
-                                 'fleet_type_1': rec.product_id.product_type,
-                                 'partner_id': self.devis_dossier.partner_id.id,
-                                 'fleet_artic_id': rec.product_id.id,
-                                 'fleet_expiration_date': expiration_date,
-                                 'fleet_type': self.devis_dossier.sale_type,
-                                 'fleet_periodicite': self.devis_dossier.sale_periodicite,
-                                 'fleet_facturation': self.devis_dossier.sale_periodicite,
-                                 'fleet_prix_HT': self.devis_dossier.sale_loyer,
-                                 'fleet_duree': self.devis_dossier.sale_duree,
-                                 'fleet_leaser': sale_leaser,
-                                 'fleet_accord': self.devis_dossier.sale_accord,
-                                 'fleet_cout_Couleur': self.devis_dossier.sale_cout_signe_col,
-                                 'fleet_forfait_couleur': self.devis_dossier.sale_forfait_signe_col,
-                                 'fleet_cout_nb': self.devis_dossier.sale_cout_signe_nb,
-                                 'fleet_forfait_nb': self.devis_dossier.sale_forfait_signe_nb,
-                                 'fleet_abonnement_service': self.devis_dossier.sale_abonnement_service,
-                                 'fleet_autre': self.devis_dossier.sale_autre_frais,
-                                 'fleet_partenariat': self.devis_dossier.sale_partenariat,
-                                 'fleet_solde_fois': self.devis_dossier.sale_solde_2_fois,
-                                 'fleet_date_fin_F': self.devis_dossier.sale_date_fin_F,
-                                 'fleet_date_2_solde': self.devis_dossier.sale_date_2_solde,
-                                 'fleet_date_inst': date.today(),
-                                 'fleet_dossier_devis': self.devis_dossier.sale_dossier,
-                                 'fleet_devis_id': self.devis_dossier.id,
-                             }
-                             parc_id2 = self.env['fleet.vehicle'].create(vals)
-                             vals = {
-                                 'num_serie': "False",
-                                 'client_id': self.devis_dossier.partner_id.id,
-                                 'fleet_id': parc_id2.id,
-                                 'article_id': rec.product_id.id,
-                             }
+                         
 
 
 
