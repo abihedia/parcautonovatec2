@@ -48,11 +48,11 @@ class CreatParkWizard(models.Model):
                      else:
                          sale_leaser = False
                     
-                    if len(list_numer_serie)< int(rec.product_uom_qty):    
+                     if len(list_numer_serie)< int(rec.product_uom_qty):    
                         for i in range(int(rec.product_uom_qty)-len(list_numer_serie)):
                             list_numer_serie.append('False')
                      
-                    for number in range(0, int(rec.product_uom_qty)):
+                     for number in range(0, int(rec.product_uom_qty)):
                             vals = {
                                     'fleet_serie':list_numer_serie[number],
                                     'fleet_fournisseur': 7,
@@ -83,14 +83,14 @@ class CreatParkWizard(models.Model):
                                     'fleet_dossier_devis': self.devis_dossier.sale_dossier,
                                     'fleet_devis_id':self.devis_dossier.id,
                                      }
-                            parc_id1 =self.env['fleet.vehicle'].create(vals)
-                            vals = {
+                              parc_id1 =self.env['fleet.vehicle'].create(vals)
+                              vals = {
                                 'num_serie': list_numer_serie[number],
                                 'client_id': self.devis_dossier.partner_id.id,
                                 'fleet_id': parc_id1.id,
                                 'article_id': rec.product_id.id,
-                            }
-                            self.env['fleetserielarticle'].create(vals)
+                               }
+                               self.env['fleetserielarticle'].create(vals)
                          
 
 
