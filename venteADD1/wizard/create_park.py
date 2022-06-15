@@ -47,9 +47,9 @@ class CreatParkWizard(models.Model):
                          sale_leaser = self.devis_dossier.sale_leaser.id
                      else:
                          sale_leaser = False
-                    num = int(rec.product_uom_qty)
-                    if len(list_numer_serie)< num:    
-                        for i in range(num-len(list_numer_serie)):
+                    
+                    if len(list_numer_serie)< int(rec.product_uom_qty):    
+                        for i in range(int(rec.product_uom_qty)-len(list_numer_serie)):
                             list_numer_serie.append('False')
                      
                     for number in range(0, int(rec.product_uom_qty)):
