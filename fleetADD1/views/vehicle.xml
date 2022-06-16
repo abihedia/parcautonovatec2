@@ -35,27 +35,7 @@
 
             </xpath>
 
-            <xpath expr="//form/sheet/div[1]" position="after" >
-                 <div class="oe_button_box" name="button_box">
-
-                         <button name="return_comp_coleur" type="object" class="oe_stat_button" icon="fa-tachometer" >
-                                <field name="comp_couleur" widget="statinfo" string="Compteur Couleur"/>
-                       </button>
-                       <button name="return_comp_noir" type="object" class="oe_stat_button" icon="fa-tachometer" >
-                            <field name="comp_noir" widget="statinfo" string="Compteur NB"/>
-                       </button>
-                       <button name="preview_art" type="object" class="oe_stat_button" icon="fa-globe icon">
-                            <div class="o_stat_info">
-                                    <span class="o_stat_text">Article </span>
-                            </div>
-                        </button>
-                     <button name="preview_devis" type="object" class="oe_stat_button" icon="fa-globe icon">
-                            <div class="o_stat_info">
-                                    <span class="o_stat_text">Devis</span>
-                            </div>
-                        </button>
-                    </div>
-            </xpath>
+           
              <xpath expr="//form/sheet/div[1]" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
