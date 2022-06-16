@@ -199,15 +199,7 @@ class FleetContINHERIT(models.Model):
    ############
     #  Vehicle #
     ############
-    comp_couleur = fields.Integer(string="Compteur Couleur", default=1)
-    comp_noir = fields.Integer(string="Compteur NB", default=1)
-
-
-    def return_comp_coleur(self):
-        pass
-
-    def return_comp_noir(self):
-        pass
+    
 
 
     def name_get(self):
@@ -240,32 +232,7 @@ class FleetContINHERIT(models.Model):
                     record.fleet_artic_id = result[0]
 
 
-    def preview_art(self):
-        if self.fleet_marque.id:
-            
-            result = self.env['product.product'].search(
-                [('product_marque', '=', self.fleet_marque.id), ('product_Modele', '=', self.fleet_Modele.id)])
-            if result:
-                self.fleet_artic_id = result[0]
-            
-        
-        return {
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'product.product',
-            'target': 'current',
-            'res_id': self.fleet_artic_id.id,
-            'type': 'ir.actions.act_window',
-        }
-    def preview_devis(self):
-        return {
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'sale.order',
-            'target': 'current',
-            'res_id': self.fleet_devis_id.id,
-            'type': 'ir.actions.act_window',
-        }
+    
 
 
 
