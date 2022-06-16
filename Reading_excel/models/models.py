@@ -27,6 +27,9 @@ class FleetContINHERITFact(models.Model):
     comp_noir_before    = fields.Integer(string="Compteur NB")
     comp_noir_ids       = fields.One2many('compteurnoirmodel', inverse_name='fleet_id', string="Historique Compteur NB")
     comp_coleur_ids     = fields.One2many('compteurcoleurmodel', inverse_name='fleet_id', string="Historique Compteur Couleur")
+    
+    comp_couleur_diff = fields.Integer(string="Nombre de pages couleur à facturer")
+    comp_noir_diff = fields.Integer(string="Nombre de pages noir à facturer")
 
     ########## smart button to compteur
     count_comp_noir = fields.Integer(string="Compteur NB", compute="compute_noir_count")
@@ -114,6 +117,9 @@ class ReadingAnexcel(models.Model):
             id.comp_couleur_after  = self.Nb_pages_C
             id.comp_noir_before = id.comp_noir_after
             id.comp_noir_after = self.Nb_pages_N
+            
+            id.comp_couleur_diff = id.comp_couleur_after - id.comp_couleur_before
+            id.comp_noir_diff = id.comp_noir_after - id.comp_noir_before
 
             self.env['compteurnoirmodel'].create(
                 {'compteur_Noir':self.Nb_pages_N,
