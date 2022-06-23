@@ -286,9 +286,7 @@
             <xpath expr="//form/sheet/notebook/page[@name='customer_signature']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
-            <xpath expr="//form/sheet/notebook/page/field/tree/control/create[@name='add_section_control']" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </xpath>
+            
 
         </field>
  </record>
