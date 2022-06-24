@@ -95,7 +95,7 @@ class factAuto(models.Model):
                     res = {
                         'order_id': purchase_id,
                         'display_type': 'line_note',
-                        'name':'Devis' +j[0].name,
+                        'name':j[0].name,
                     }
                     self.env['sale.order.line'].sudo().create(res)
 
