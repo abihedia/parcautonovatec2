@@ -152,6 +152,12 @@ class SaleOrderHeritage(models.Model):
                                             default=lambda self: self.env['product.product'].search([('id', '=', 69)]))
     cout_copie_coleurs_sup = fields.Many2one('product.product', string="Copies couleurs supplémentaires",
                                              default=lambda self: self.env['product.product'].search([('id', '=', 68)]))
+    services = fields.Many2one('product.product', string="Services",
+                               default=lambda self: self.env['product.product'].search([('id', '=', 70)]))
+    abonnements = fields.Many2one('product.product', string="Montant abonnement",
+                                  default=lambda self: self.env['product.product'].search([('id', '=', 72)]))
+
+
 
 
 
