@@ -219,7 +219,7 @@ class factAuto(models.Model):
                 res = {
                     'order_id': purchase_id,
                     'display_type': 'line_section',
-                    'name': "Dossier N°" + j[0].sale_dossier,
+                    'name': "Dossier N°" + str(j[0].sale_dossier),
                 }
                 self.env['sale.order.line'].sudo().create(res)
 
