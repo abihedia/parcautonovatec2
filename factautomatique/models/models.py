@@ -96,23 +96,23 @@ class factAuto(models.Model):
                 print('autre', qte_by_dossier_autre)
 
                 if purchase_id:
-                    if qte_by_dossier_forfait_coleur:
+                     if j[0].sale_forfait_signe_col:
                         res = {
                             'order_id': purchase_id,
                             'product_id': j[0].cout_copie_coleurs.id,
                             'name': j[0].cout_copie_coleurs.name,
                             'price_unit': j[0].sale_cout_signe_col,
-                            'product_uom_qty': qte_by_dossier_forfait_coleur,
+                            'product_uom_qty': j[0].sale_forfait_signe_col,
                         }
                         self.env['sale.order.line'].sudo().create(res)
 
-                    if qte_by_dossier_forfait_noir:
+                    if j[0].sale_forfait_signe_nb:
                         res = {
                             'order_id': purchase_id,
                             'product_id': j[0].cout_copie_noires.id,
                             'name': j[0].cout_copie_noires.name,
                             'price_unit': j[0].sale_cout_signe_nb,
-                            'product_uom_qty':qte_by_dossier_forfait_noir ,
+                            'product_uom_qty':j[0].sale_forfait_signe_nb ,
                         }
                         self.env['sale.order.line'].sudo().create(res)
 
@@ -225,23 +225,23 @@ class factAuto(models.Model):
 
 
                 if purchase_id:
-                    if qte_by_dossier_forfait_coleur:
+                    if j[0].sale_forfait_signe_col:
                         res = {
                             'order_id': purchase_id,
                             'product_id': j[0].cout_copie_coleurs.id,
                             'name': j[0].cout_copie_coleurs.name,
                             'price_unit': j[0].sale_cout_signe_col,
-                            'product_uom_qty': qte_by_dossier_forfait_coleur,
+                            'product_uom_qty': j[0].sale_forfait_signe_col,
                         }
                         self.env['sale.order.line'].sudo().create(res)
 
-                    if qte_by_dossier_forfait_noir:
+                    if j[0].sale_forfait_signe_nb:
                         res = {
                             'order_id': purchase_id,
                             'product_id': j[0].cout_copie_noires.id,
                             'name': j[0].cout_copie_noires.name,
                             'price_unit': j[0].sale_cout_signe_nb,
-                            'product_uom_qty':qte_by_dossier_forfait_noir ,
+                            'product_uom_qty':j[0].sale_forfait_signe_nb ,
                         }
                         self.env['sale.order.line'].sudo().create(res)
 
