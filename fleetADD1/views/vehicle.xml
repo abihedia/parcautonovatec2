@@ -98,6 +98,8 @@
                 <group string="infos MATÉRIELS">
                     <field name="partner_id" />
                      <field name="fleet_serie" />
+                    <field name="comp_couleur_depart" />
+                    <field name="comp_noir_depart" />
                      <field name="fleet_fournisseur" />
                     <field name="fleet_marque" />
                     <field name="fleet_Modele" />
