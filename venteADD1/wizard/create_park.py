@@ -8,7 +8,65 @@ class CreatParkWizard(models.Model):
     devis_dossier = fields.Many2one( "sale.order",string='Numéro de dossier')
 
     def create_parck(self):
-        
+        if self.devis_dossier:
+            sale_vals = {
+                'company_id': self.devis_dossier.company_id.id,
+                'date_order': datetime.now(),
+                'partner_id': self.devis_dossier.partner_id.id,
+                'partner_invoice_id':self.devis_dossier.partner_invoice_id.id,
+                'partner_shipping_id':self.devis_dossier.partner_shipping_id.id,
+                'picking_policy': self.devis_dossier.picking_policy,
+                'pricelist_id': self.devis_dossier.pricelist_id.id,
+                'warehouse_id': self.devis_dossier.warehouse_id.id,
+                'state': 'sale',
+            }
+            purchase_id1 = self.env['sale.order'].sudo().create(sale_vals)
+            purchase_id = purchase_id1.id
+            res = {
+                'order_id': purchase_id,
+                'display_type': 'line_section',
+                'name': "Dossier N°" + str(self.devis_dossier.sale_dossier),
+            }
+            self.env['sale.order.line'].sudo().create(res)
+            if self.devis_dossier.sale_forfait_signe_col:
+                res = {
+                    'order_id': purchase_id,
+                    'product_id': self.devis_dossier.cout_copie_coleurs.id,
+                    'name': self.devis_dossier.cout_copie_coleurs.name,
+                    'price_unit': self.devis_dossier.sale_cout_signe_col,
+                    'product_uom_qty': self.devis_dossier.sale_forfait_signe_col,
+                }
+                self.env['sale.order.line'].sudo().create(res)
+
+            if self.devis_dossier.sale_forfait_signe_nb:
+                res = {
+                    'order_id': purchase_id,
+                    'product_id': self.devis_dossier.cout_copie_noires.id,
+                    'name': self.devis_dossier.cout_copie_noires.name,
+                    'price_unit': self.devis_dossier.sale_cout_signe_nb,
+                    'product_uom_qty': self.devis_dossier.sale_forfait_signe_nb,
+                }
+                self.env['sale.order.line'].sudo().create(res)
+            if self.devis_dossier.sale_abonnement_service:
+                res = {
+                    'order_id': purchase_id,
+                    'product_id': self.devis_dossier.abonnements.id,
+                    'name': self.devis_dossier.abonnements.name,
+                    'price_unit': self.devis_dossier.sale_abonnement_service,
+                    'product_uom_qty': '1',
+                }
+                self.env['sale.order.line'].sudo().create(res)
+
+            if self.devis_dossier.sale_autre_frais:
+                res = {
+                    'order_id': purchase_id,
+                    'product_id': self.devis_dossier.services.id,
+                    'name': self.devis_dossier.services.name,
+                    'price_unit': self.devis_dossier.sale_autre_frais,
+                    'product_uom_qty': '1',
+                }
+                self.env['sale.order.line'].sudo().create(res)
+              
         if self.devis_dossier.order_line:
             if self.devis_dossier.sale_periodicite == 'mens':
                 if self.devis_dossier.sale_duree:
