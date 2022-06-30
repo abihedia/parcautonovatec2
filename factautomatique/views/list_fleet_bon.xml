@@ -10,6 +10,8 @@
           <field name="name"/>
           <field name="fleet_id"/>
           <field name="devis_id"/>
+          <field name="comp_couleur_diff"/>
+          <field name="comp_noir_diff"/>
         </tree>
       </field>
     </record>
@@ -22,6 +24,8 @@
             <field name="name"/>
             <field name="fleet_id"/>
             <field name="devis_id"/>
+            <field name="comp_couleur_diff"/>
+          <field name="comp_noir_diff"/>
             </group>
 
         </form>
