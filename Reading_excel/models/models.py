@@ -9,6 +9,11 @@ class CompteurCouleurModel(models.Model):
     compteur_Couleur = fields.Integer('Compteur Couleur')
     numero_serie     = fields.Char('N° serie')
     fleet_id         = fields.Many2one("fleet.vehicle", string='Matériels')
+    @api.onchange("compteur_Couleur")
+    def update_serie_after(self):
+        for rec in self:
+            rec.fleet_id.comp_couleur_after =rec.compteur_Couleur
+        
 
 
 
@@ -18,6 +23,11 @@ class CompteurNoirModel(models.Model):
     compteur_Noir = fields.Integer('Compteur NB')
     numero_serie  = fields.Char('N° serie')
     fleet_id      = fields.Many2one("fleet.vehicle", string='Matériels')
+    @api.onchange("compteur_Noir")
+    def update_serie_after(self):
+        for rec in self:
+            rec.fleet_id.comp_noir_after = rec.compteur_Noir
+        
 
 
 
