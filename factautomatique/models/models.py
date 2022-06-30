@@ -75,6 +75,8 @@ class factAuto(models.Model):
                     res = {
                         'fleet_id': k.id,
                         'devis_id': purchase_id,
+                        'comp_couleur_diff': k.comp_couleur_diff,
+                        'comp_noir_diff': k.comp_noir_diff,
                     }
                     self.env['listboncommandefleet'].sudo().create(res)
                     ################### fin
@@ -194,6 +196,8 @@ class factAuto(models.Model):
                     res = {
                         'fleet_id': k.id,
                         'devis_id': purchase_id,
+                        'comp_couleur_diff': k.comp_couleur_diff,
+                        'comp_noir_diff': k.comp_noir_diff,
                     }
                     id=self.env['listboncommandefleet'].sudo().create(res)
 
