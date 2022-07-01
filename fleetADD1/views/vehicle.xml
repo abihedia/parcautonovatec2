@@ -135,9 +135,11 @@
                 <attribute name="invisible">True</attribute>
             </xpath>
             
+            <!--
             <xpath expr="//form/sheet/group[2]" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
+             -->
             
 
             <xpath expr="//form/sheet/notebook[1]" position="attributes">
