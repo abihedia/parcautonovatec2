@@ -8,6 +8,8 @@ class PartnerInvoiceHerit(models.Model):
     code_service = fields.Char('Code service')
     augmentation_sav = fields.Float(string='Augmentation SAV')
     augmentation_sav_bool= fields.Boolean(string="Augmentation SAV")
+    type_facture = fields.Selection([('par_dossier', 'facture par dossier'),('tout_dossiers', 'facturer tout les dossiers')],default='par_dossier')
+
 
 
 
