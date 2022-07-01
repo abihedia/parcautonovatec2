@@ -12,6 +12,7 @@
                         <page string="Facturation" name="facturation">
                             <group>
                                 <group>
+                                    <field  name="type_facture" />
                                     <field name="pfr"></field>
                                     <field name="code_service"></field>
                                      <field name="augmentation_sav_bool"></field>
