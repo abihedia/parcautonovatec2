@@ -20,7 +20,7 @@
     'data': [
           'security/ir.model.access.csv',
          'views/views.xml',
-         'views/parnter_facture.xml',
+         #'views/parnter_facture.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
