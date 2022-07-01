@@ -330,7 +330,7 @@ class SaleOrderHeritage(models.Model):
 
 class PartnerInherit(models.Model):
     _inherit = 'res.partner'
-    type_facture = fields.Selection([('par_dossier', 'facture par dossier'),('tout_dossiers', 'facturer tout les dossiers')],default='par_dossier')
+    
 
 #add field periodicité
 class FleetEtatINHERIT(models.Model):
